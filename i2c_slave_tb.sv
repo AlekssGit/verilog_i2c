@@ -205,7 +205,7 @@ module i2c_slave_tb();
                 end
             // check if txdata = s_rxdata
 
-            // nack
+            // wait for ack
             #20;
             _sda = 1'bz;
             #20;

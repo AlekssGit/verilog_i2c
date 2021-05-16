@@ -62,7 +62,10 @@ module i2c_slave
                 end
             else
                 begin
-                    state = next;
+                    if (stop_detect)
+                        state = IDLE;
+                    else
+                        state = next;
                 end
         end
 
@@ -81,11 +84,9 @@ module i2c_slave
             endcase
         end
 
-    always @(posedge clk, posedge stop_detect)
+    always @(posedge clk)
         begin
-            if (stop_detect)
-                ack = 1'b0;
-            else if (read_strobe)
+            if (read_strobe)
                 begin
                     if (state == ACK_W || state == ACK_R || state == ACK_A && r)
                         ack = ~sda;
@@ -94,14 +95,9 @@ module i2c_slave
                 end
         end
 
-    always @(posedge clk, posedge stop_detect)
+    always @(posedge clk)
         begin
-            if (stop_detect)
-                begin
-                    r = 1'b0;
-                    w = 1'b0;
-                end
-            else if (read_strobe)
+            if (read_strobe)
                 begin
                     if (state == IDLE || state == ADDRESS)
                         begin
@@ -131,7 +127,6 @@ module i2c_slave
                             end
                         WRITE:
                             begin
-
                                 _sda = txshift[7] ? 1'bz:1'b0;
                             end
                     endcase
@@ -143,7 +138,7 @@ module i2c_slave
         begin
             if (state == IDLE)
                 counter = '0;
-            else if (read_strobe && (state == ADDRESS || state == READ ||  state == RW) || write_strobe && state == WRITE)
+            else if (read_strobe && (state == ADDRESS || state == READ || state == RW) || write_strobe && state == WRITE)
                 counter++;
         end
 
