@@ -58,6 +58,8 @@ output logic s_51_reset;
 output logic m_clock;
 
 int i;
+int main_counter;
+int master_restart_counter;
 
 initial
 begin
@@ -73,6 +75,9 @@ begin
 	s_51_tx_data = 8'hBB;
 	s_50_reset = 1'b1;
 	s_51_reset = 1'b1;
+
+	main_counter = 0;
+	master_restart_counter = 0;
 
         #5;
         m_reset = 1;
@@ -90,8 +95,7 @@ begin
 			0,1,2,3,4,5,6,7,8: m_restart = 1;
 			default: m_restart = 0;
 			endcase
-			if(i % 2 == 0)
-				m_clock = ~m_clock;
+			m_clock = (i % 2) ? ~m_clock : m_clock;
 			#5 
 			clock=1;
           		#5 
