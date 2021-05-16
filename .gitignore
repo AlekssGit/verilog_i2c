@@ -1,0 +1,8 @@
+.idea
+work
+
+*.bak
+*.mti
+*.mpf
+tcl_stacktrace.txt
+vsim.wlf
