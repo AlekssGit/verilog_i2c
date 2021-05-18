@@ -1,0 +1,63 @@
+# Current time Tue May 18 15:46:03 2021
+# Program = vish
+# Id = "10.4c"
+# Version = "2015.07"
+# Date = "Jul 20 2015"
+# Platform = win64
+
+Exception c0000005 has occurred at address 4036e095. Traceback:
+# 0    0x4036e095: 'Ucdb_Init + 0xd5a45'
+# 1    0x4036eb8a: 'Ucdb_Init + 0xd653a'
+# 2    0x4036ec28: 'Ucdb_Init + 0xd65d8'
+# 3    0x4036bafd: 'Ucdb_Init + 0xd34ad'
+# 4    0x4036bbe4: 'Ucdb_Init + 0xd3594'
+# 5    0x40233b62: 'Mtirpc_Init + 0x175212'
+# 6    0x1000faa8: 'TclInvokeStringCommand + 0xc8'
+# 7    0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 8    0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 9    0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 10   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 11   0x10012cbd: 'Tcl_EvalObjEx + 0x1d'
+# 12   0x8000c0ef: 'Itcl_EvalMemberCode + 0x22f'
+# 13   0x8000c3a4: 'Itcl_ExecMethod + 0x184'
+# 14   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 15   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 16   0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 17   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 18   0x10012cbd: 'Tcl_EvalObjEx + 0x1d'
+# 19   0x8000c0ef: 'Itcl_EvalMemberCode + 0x22f'
+# 20   0x8000c3a4: 'Itcl_ExecMethod + 0x184'
+# 21   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 22   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 23   0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 24   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 25   0x10012cbd: 'Tcl_EvalObjEx + 0x1d'
+# 26   0x8000c0ef: 'Itcl_EvalMemberCode + 0x22f'
+# 27   0x8000c3a4: 'Itcl_ExecMethod + 0x184'
+# 28   0x800108d6: 'Itcl_EvalArgs + 0x106'
+# 29   0x8000db97: 'Itcl_HandleInstance + 0x167'
+# 30   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 31   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 32   0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 33   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 34   0x1008fa7a: 'TclGetNamespaceFromObj + 0x168a'
+# 35   0x1008e791: 'TclGetNamespaceFromObj + 0x3a1'
+# 36   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 37   0x10012405: 'Tcl_EvalEx + 0x9c5'
+# 38   0x10011a68: 'Tcl_EvalEx + 0x28'
+# 39   0x103288e0: 'Tk_BindEvent + 0xc30'
+# 40   0x102f4644: 'TkBindEventProc + 0x264'
+# 41   0x102e4008: 'Tk_HandleEvent + 0x2f8'
+# 42   0x102e276e: 'TkCreateThreadExitHandler + 0x36e'
+# 43   0x10095092: 'Tcl_ServiceEvent + 0xd2'
+# 44   0x100954b2: 'Tcl_DoOneEvent + 0x172'
+# 45   0x102e21a5: 'Tk_MainLoop + 0x25'
+# 46   0x102ae12b: 'Tk_MainEx + 0x91b'
+# 47   0x400e16eb: 'Mtirpc_Init + 0x22d9b'
+# 48   0x400e376a: 'Mtirpc_Init + 0x24e1a'
+# 49   0x405b9952: 'Tclsqlite_Init + 0xb3492'
+# 50   0xad4c7034: 'BaseThreadInitThunk + 0x14'
+# 51   0xaed22651: 'RtlUserThreadStart + 0x21'
+StackWalk failed 0
+# End of Stack Trace
+
