@@ -37,7 +37,9 @@ pullup (weak1) pull_scl (scl);
 logic m_clock;
 
 //end variables for slave
-imp_generator gen (.address(address), .clock(clock), .m_reset(m_reset), .m_enable(m_enable), .m_rw(m_rw), .m_tx_data(m_tx_data), .m_restart(m_restart), .s_50_tx_data(s_50_tx_data), .s_51_tx_data(s_51_tx_data), .s_50_reset(s_50_reset), .s_51_reset(s_51_reset), .m_clock(m_clock), .m_ack(m_ack), .m_rx_data(m_rx_data), .s_50_rx_data(s_50_rx_data), .s_51_rx_data(s_51_rx_data), .m_nack(m_nack));
+imp_generator_v2 gen_v2 (.address(address), .clock(clock), .m_reset(m_reset), .m_enable(m_enable), .m_rw(m_rw), .m_tx_data(m_tx_data), .m_restart(m_restart), .s_50_tx_data(s_50_tx_data), .s_51_tx_data(s_51_tx_data), .s_50_reset(s_50_reset), .s_51_reset(s_51_reset), .m_clock(m_clock), .m_ack(m_ack), .m_rx_data(m_rx_data), .s_50_rx_data(s_50_rx_data), .s_51_rx_data(s_51_rx_data), .m_nack(m_nack), .m_ready(m_ready));
+
+//imp_generator gen (.address(address), .clock(clock), .m_reset(m_reset), .m_enable(m_enable), .m_rw(m_rw), .m_tx_data(m_tx_data), .m_restart(m_restart), .s_50_tx_data(s_50_tx_data), .s_51_tx_data(s_51_tx_data), .s_50_reset(s_50_reset), .s_51_reset(s_51_reset), .m_clock(m_clock), .m_ack(m_ack), .m_rx_data(m_rx_data), .s_50_rx_data(s_50_rx_data), .s_51_rx_data(s_51_rx_data), .m_nack(m_nack));
 i2c_master master ( .clk(m_clock), .txdata(m_tx_data), .address(address), .enable(m_enable), .rw(m_rw), .restart(m_restart), .reset_n(m_reset), .scl(scl), .sda(sda), .rxdata(m_rx_data), .ack(m_ack), .nack(m_nack), .ready(m_ready));
 i2c_slave #(7'h50) slave_50 (.clk(clock), .reset_n(s_50_reset), .scl(scl), .sda(sda) , .txdata(s_50_tx_data), .rxdata(s_50_rx_data), .ack(s_50_ack), .r(s_50_r), .w(s_50_w));
 i2c_slave #(7'h51) slave_51 (.clk(clock), .reset_n(s_51_reset), .scl(scl), .sda(sda) , .txdata(s_51_tx_data), .rxdata(s_51_rx_data), .ack(s_51_ack), .r(s_51_r), .w(s_51_w));
@@ -107,25 +109,37 @@ begin
 	forever
 	begin
 		case(state)
-		WRITE: 
+		WRITE, READ: 
 		begin
-
-			//m_rx_data = 8'h00;
 			//m_restart = 1'b0;
 			m_enable = 1'b1;
-			m_rw = 1'b0;
-			address = 7'h50;
+			address = (state == WRITE) ? 7'h50 :7'h51;
+			if(m_ack == 1'b0)
+			begin
+				if(ack_posedge)
+				begin
+					ack_posedge = 0;
+					if(state == WRITE)
+					begin					
+						state = ACK_1_W;
+						m_rw = ~m_rw;
+					end
+					else if (state == READ)
+					begin
+						state = ACK_1_R;
+						m_rw = ~m_rw;
+					end
+					//else if(state == ACK_1_W)
+//					state = ACK_2;
+				end
+			end
 		end
-		READ:
+		/*READ:
 		begin
-			
-			//s_50_rx_data = 8'h00;
-			//s_51_rx_data = 8'h00;
 			//m_restart = 1'b0;
 			m_enable = 1'b1;
-			m_rw = 1'b1;
 			address = 7'h51;
-		end
+		end*/
 		ACK_1_R: 
 		begin
 			//m_rw = ~m_rw;
@@ -134,13 +148,18 @@ begin
 			if(m_nack)
 			begin
 				state = ACK_2;
+				ack_posedge = 0;
 			end
 		end
 		ACK_1_W: 
 		begin
-			//m_rw = ~m_rw;
 			//m_restart = 1'b1;
 			m_enable = 1'b0;
+			if(ack_posedge && (m_ack == 1'b0))
+			begin
+				ack_posedge = 0;
+				state = ACK_2;
+			end
 		end
 		ACK_2:
 		begin
@@ -162,12 +181,17 @@ begin
 		begin
 		end
 		endcase
-
-		if(m_nack == 1'b1)
+		
+		if(m_ack == 1'b1)
 		begin
-			ack_posedge = 0;
-		end
+			ack_posedge = 1'b1;
+		end	
 
+	//	if(m_nack == 1'b1)
+	//	begin
+	//		ack_posedge = 0;
+	//	end
+/*
 		if(m_ack == 1'b1)
 		begin
 			ack_posedge = 1'b1;
@@ -191,6 +215,7 @@ begin
 					state = ACK_2;
 			end
 		end
+*/
 
 		m_clock = (i % 2) ? ~m_clock : m_clock;
 		#5 

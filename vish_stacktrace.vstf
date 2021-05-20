@@ -61,3 +61,78 @@ Exception c0000005 has occurred at address 4036e095. Traceback:
 StackWalk failed 0
 # End of Stack Trace
 
+# Current time Wed May 19 12:04:28 2021
+# Program = vish
+# Id = "10.4c"
+# Version = "2015.07"
+# Date = "Jul 20 2015"
+# Platform = win64
+
+Exception c0000005 has occurred at address 401ae264. Traceback:
+# 0    0x401ae264: 'Mtirpc_Init + 0xef914'
+# 1    0x401b7176: 'Mtirpc_Init + 0xf8826'
+# 2    0x401b923d: 'Mtirpc_Init + 0xfa8ed'
+# 3    0x401b9713: 'Mtirpc_Init + 0xfadc3'
+# 4    0x401b9a86: 'Mtirpc_Init + 0xfb136'
+# 5    0x4005e968: '<unknown (@0x4005e968)>'
+# 6    0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 7    0x10012405: 'Tcl_EvalEx + 0x9c5'
+# 8    0x10012f19: 'TclEvalObjEx + 0x249'
+# 9    0x1001af97: 'Tcl_DbCkrealloc + 0x33d7'
+# 10   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 11   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 12   0x100a62b4: 'TclObjInterpProcCore + 0x74'
+# 13   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 14   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 15   0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 16   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 17   0x10012cbd: 'Tcl_EvalObjEx + 0x1d'
+# 18   0x8000c0ef: 'Itcl_EvalMemberCode + 0x22f'
+# 19   0x8000c3a4: 'Itcl_ExecMethod + 0x184'
+# 20   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 21   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 22   0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 23   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 24   0x10012cbd: 'Tcl_EvalObjEx + 0x1d'
+# 25   0x8000c0ef: 'Itcl_EvalMemberCode + 0x22f'
+# 26   0x8000c3a4: 'Itcl_ExecMethod + 0x184'
+# 27   0x800108d6: 'Itcl_EvalArgs + 0x106'
+# 28   0x8000db97: 'Itcl_HandleInstance + 0x167'
+# 29   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 30   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 31   0x10057f0a: 'Tcl_ExprObj + 0x79a'
+# 32   0x100130b0: 'TclEvalObjEx + 0x3e0'
+# 33   0x1008fa7a: 'TclGetNamespaceFromObj + 0x168a'
+# 34   0x1008e791: 'TclGetNamespaceFromObj + 0x3a1'
+# 35   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 36   0x10012405: 'Tcl_EvalEx + 0x9c5'
+# 37   0x10011a68: 'Tcl_EvalEx + 0x28'
+# 38   0x103288e0: 'Tk_BindEvent + 0xc30'
+# 39   0x102f4644: 'TkBindEventProc + 0x264'
+# 40   0x102e4008: 'Tk_HandleEvent + 0x2f8'
+# 41   0x0b179ccd: '<unknown (@0xb179ccd)>'
+# 42   0x0b18db0b: '<unknown (@0xb18db0b)>'
+# 43   0x0b18e997: '<unknown (@0xb18e997)>'
+# 44   0x0b18f0d4: '<unknown (@0xb18f0d4)>'
+# 45   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 46   0x1005931a: 'Tcl_ExprObj + 0x1baa'
+# 47   0x100a62b4: 'TclObjInterpProcCore + 0x74'
+# 48   0x10011461: 'Tcl_ListMathFuncs + 0x591'
+# 49   0x10012405: 'Tcl_EvalEx + 0x9c5'
+# 50   0x10011a68: 'Tcl_EvalEx + 0x28'
+# 51   0x103288e0: 'Tk_BindEvent + 0xc30'
+# 52   0x102f4644: 'TkBindEventProc + 0x264'
+# 53   0x102e4008: 'Tk_HandleEvent + 0x2f8'
+# 54   0x102e276e: 'TkCreateThreadExitHandler + 0x36e'
+# 55   0x10095092: 'Tcl_ServiceEvent + 0xd2'
+# 56   0x1009540b: 'Tcl_DoOneEvent + 0xcb'
+# 57   0x102e21a5: 'Tk_MainLoop + 0x25'
+# 58   0x102ae12b: 'Tk_MainEx + 0x91b'
+# 59   0x400e16eb: 'Mtirpc_Init + 0x22d9b'
+# 60   0x400e376a: 'Mtirpc_Init + 0x24e1a'
+# 61   0x405b9952: 'Tclsqlite_Init + 0xb3492'
+# 62   0xad4c7034: 'BaseThreadInitThunk + 0x14'
+# 63   0xaed22651: 'RtlUserThreadStart + 0x21'
+StackWalk failed 0
+# End of Stack Trace
+
